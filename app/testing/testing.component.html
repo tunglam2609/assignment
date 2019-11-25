@@ -1,0 +1,27 @@
+<div class="testing">
+    <form>
+        <div class="card">
+            <div class="card-header">{{subject?.Name}}
+                <div>
+                    <label>Thời gian làm bài: </label>
+                    <span class="ml-2 badge badge-pill badge-primary" id="timeCountDown"></span>
+                </div>
+            </div>
+            <div class="card-body"
+                *ngFor='let p of questions | paginate: { itemsPerPage: itemOnPage, currentPage: page }'>
+                <h5>Câu {{ page }} :{{p.Text}}</h5>
+                <p>Đáp án đúng: {{p.AnswerId}}</p>
+                <div class="form-check" *ngFor="let t of p.Answers">
+                    <input type="radio" class="form-check-input" name="{{p.Id}}" value="{{t.Id}}"
+                        [(ngModel)]="answerId" [ngModelOptions]="{standalone: true}">
+                    <label class="form-check-label" for="radio1">
+                        {{t.Text}}
+                    </label>
+                </div>
+                <button (click)="prePage()"><i class="far fa-hand-point-left"></i></button>
+                <button (click)="nextPage()"><i class="far fa-hand-point-right"></i></button>
+            </div>
+            <div class="card-footer"><button type="submit" class="btn btn-primary" (click)="nopBai(user[0])">Nộp bài</button></div>
+        </div>
+    </form>
+</div>

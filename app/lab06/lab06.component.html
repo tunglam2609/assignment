@@ -1,0 +1,48 @@
+<img src="assets/anhbtl.png" alt="#" width="1400">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">MuaTC-Exam</a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/gioithieu']">Giới thiệu</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/lienhe']">Liên hệ</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/gopy']">Góp ý </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/hoidap']">Hỏi đáp</a>
+    </li>
+  </ul>
+  <form class="   form-inline my-2 my-1g-0">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Tài khoản
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item"  [routerLink]="['/dangky']">Đăng ký</a>
+        <a class="dropdown-item"  [routerLink]="['/dangnhap']">Đăng nhập</a>
+        <a class="dropdown-item" [routerLink]="['/quenmk']">Quên mật khẩu</a>
+      </div>
+    </li>
+  </form>
+</nav>
+<div class="row">
+  <div class="col-10 row" >       
+          <div class="card col-3" *ngFor="let p of allSubjects" style="width: 300px">
+            <div class="card-body"><img src="{{p.Logo}}"></div>
+            <div class="card-footer" style="cursor: pointer;" [routerLink]="['/testing',p.Id]">{{p.Name}}</div>
+          </div>   
+  </div>
+  <div class="col-2">
+    <i class="fas fa-list">Danh mục môn học</i>
+    <table class="table table-striped" *ngFor="let p of allSubjects">
+      <thead>
+        <tr style="cursor: pointer;" [routerLink]="['/testing',p.Id]">
+          {{p.Name}}
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
